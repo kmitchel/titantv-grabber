@@ -93,10 +93,10 @@ Jellyfin can be reluctant to create series recordings for guide entries that are
 This rewrite is intentional: it makes recurring news programs look like recordable series episodes to Jellyfin while preserving the original news categorization for guide browsing.
 
 
-## Node.js Port (Untested)
+## Node.js Port
 
-> [!WARNING]
-> The `nodejs-port` branch contains an untested Node.js version of the Python grabber. It is intended for review and experimentation only until the install path, runtime behavior, and generated XMLTV output have been validated against a real TitanTV lineup.
+> [!NOTE]
+> The `nodejs-port` branch has had a basic live run against the working TitanTV IDs from the `/opt/titantv-grabber` installation. It generated `titantv.db` and `xmltv.xml` successfully, but it has not yet had long-term timer/container validation or a full Jellyfin import comparison against the Python version.
 
 Install dependencies and run the port from this branch with:
 

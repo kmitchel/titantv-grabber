@@ -1,4 +1,5 @@
-# Python cache/build output
+# Dependency and cache output
+node_modules/
 __pycache__/
 *.py[cod]
 *$py.class
