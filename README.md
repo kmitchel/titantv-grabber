@@ -49,6 +49,33 @@ TITANTV_USER_ID=your-titantv-user-uuid
 TITANTV_LINEUP_ID=your-titantv-lineup-uuid
 ```
 
+### Finding TitanTV IDs
+
+The grabber needs the TitanTV user UUID and lineup UUID that TitanTV uses in its internal API requests. These values are account/location specific, so keep them in `/etc/titantv-grabber/titantv-grabber.env` and do not commit them.
+
+To find the user ID and current lineup ID:
+
+1. Sign in to TitanTV and open the listings page for the lineup you want to export.
+2. Open your browser developer tools and select the Network tab.
+3. Refresh the listings page, change the date, or move through the guide so TitanTV reloads schedule data.
+4. Filter network requests for `api/schedule` or `api/channel`.
+5. Look for a URL shaped like one of these:
+
+   ```text
+   https://titantv.com/api/schedule/<user-id>/<lineup-id>/<yyyymmddhhmm>/<duration>
+   https://titantv.com/api/channel/<user-id>/<lineup-id>
+   ```
+
+6. Copy the first UUID into `TITANTV_USER_ID` and the second UUID into `TITANTV_LINEUP_ID`.
+
+If you know the user ID but are not sure which lineup ID to use, run the grabber without `--lineup`:
+
+```bash
+python titantv_grabber.py --user "$TITANTV_USER_ID"
+```
+
+When TitanTV returns multiple lineups, the command prints each lineup name and ID so you can choose the one to put in `TITANTV_LINEUP_ID`.
+
 ## Manual Run
 
 From the application directory:
