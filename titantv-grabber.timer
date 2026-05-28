@@ -1,0 +1,9 @@
+[Unit]
+Description=Run TitanTV Grabber daily
+
+[Timer]
+OnCalendar=0/12:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

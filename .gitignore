@@ -1,0 +1,27 @@
+# Python cache/build output
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Local configuration and secrets
+.env
+*.env
+titantv-grabber.env
+
+# TitanTV runtime/generated data
+titantv.db
+*.db
+xmltv.xml
+*.xml
+channel_dump.json
+*_dump.json
+
+# Logs and diagnostics
+*.log
+debug_*.py
+test_*.xml

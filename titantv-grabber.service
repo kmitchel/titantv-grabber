@@ -1,0 +1,15 @@
+[Unit]
+Description=TitanTV Grabber Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=jellyfin
+Group=jellyfin
+WorkingDirectory=/opt/titantv-grabber
+EnvironmentFile=/etc/titantv-grabber/titantv-grabber.env
+ExecStart=/usr/bin/python3 /opt/titantv-grabber/titantv_grabber.py --user ${TITANTV_USER_ID} --lineup ${TITANTV_LINEUP_ID}
+
+[Install]
+WantedBy=multi-user.target
