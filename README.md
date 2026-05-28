@@ -92,6 +92,30 @@ Jellyfin can be reluctant to create series recordings for guide entries that are
 
 This rewrite is intentional: it makes recurring news programs look like recordable series episodes to Jellyfin while preserving the original news categorization for guide browsing.
 
+## Docker
+
+> [!WARNING]
+> Docker support has not been tested yet. The Dockerfile is provided as a starting point for containerized runs, but the image build and runtime behavior still need validation.
+
+Build the image from the repository root:
+
+```bash
+docker build -t titantv-grabber .
+```
+
+Run the grabber with a bind-mounted data directory. The container uses `/data` as its working directory, so generated `titantv.db` and `xmltv.xml` are written there:
+
+```bash
+mkdir -p ./data
+docker run --rm \
+  -v "$PWD/data:/data" \
+  titantv-grabber \
+  --user "$TITANTV_USER_ID" \
+  --lineup "$TITANTV_LINEUP_ID"
+```
+
+After a successful run, point Jellyfin at the generated XMLTV file in the mounted data directory.
+
 ## Install Under `/opt`
 
 The provided systemd units assume the application is installed at `/opt/titantv-grabber` and runs as `jellyfin`:
