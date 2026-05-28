@@ -86,6 +86,12 @@ python titantv_grabber.py --user "$TITANTV_USER_ID" --lineup "$TITANTV_LINEUP_ID
 
 The command writes `titantv.db` and `xmltv.xml` in the current working directory.
 
+## Jellyfin News Recordings
+
+Jellyfin can be reluctant to create series recordings for guide entries that are only categorized as news. The generated XMLTV output keeps the `News` category, but also emits non-movie programs with a `Series` category and a synthetic `episode-num` when TitanTV does not provide season/episode data. News programs are also marked with XMLTV `<new>` metadata.
+
+This rewrite is intentional: it makes recurring news programs look like recordable series episodes to Jellyfin while preserving the original news categorization for guide browsing.
+
 ## Install Under `/opt`
 
 The provided systemd units assume the application is installed at `/opt/titantv-grabber` and runs as `jellyfin`:
