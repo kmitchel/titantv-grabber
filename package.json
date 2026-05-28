@@ -1,0 +1,18 @@
+{
+  "name": "titantv-grabber-nodejs-port",
+  "version": "0.1.0",
+  "description": "Untested Node.js port of titantv-grabber.",
+  "private": true,
+  "type": "commonjs",
+  "main": "titantv_grabber.js",
+  "scripts": {
+    "start": "node titantv_grabber.js",
+    "check": "node --check titantv_grabber.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.5.0"
+  }
+}
